@@ -139,24 +139,22 @@ export default function App() {
     }
   };
 
+  const directDownloadR2 = () => {
+    window.location.href = 'https://pub-47ed3d1499e74513acc2f956e489e661.r2.dev/hrytvapk/Hrry_tv_pro.apk';
+  };
+
   return (
     <div className="min-h-screen bg-[#0b0f17] text-slate-100 flex flex-col selection:bg-rose-500 selection:text-white">
       {/* 1. Navbar */}
       <Navbar
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}
-        onDownloadClick={() => {
-          setDownloadPromptChannel(null);
-          setShowDownloadModal(true);
-        }}
+        onDownloadClick={directDownloadR2}
       />
 
       {/* 2. Hero OTT Banner */}
       <HeroBanner
-        onDownloadClick={() => {
-          setDownloadPromptChannel(null);
-          setShowDownloadModal(true);
-        }}
+        onDownloadClick={directDownloadR2}
         onExploreClick={scrollToChannels}
       />
 
@@ -277,10 +275,7 @@ export default function App() {
               Developer (@cryvex4)
             </a>
             <button
-              onClick={() => {
-                setDownloadPromptChannel(null);
-                setShowDownloadModal(true);
-              }}
+              onClick={directDownloadR2}
               className="text-red-400 hover:text-red-300 flex items-center gap-1 transition cursor-pointer"
             >
               <Download className="w-3.5 h-3.5" /> Download App
@@ -291,10 +286,7 @@ export default function App() {
 
       {/* 6. Mobile Bottom Bar */}
       <StickyBottomBar
-        onDownloadClick={() => {
-          setDownloadPromptChannel(null);
-          setShowDownloadModal(true);
-        }}
+        onDownloadClick={directDownloadR2}
       />
 
       {/* 7. Telegram Modal */}
