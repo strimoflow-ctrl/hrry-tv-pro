@@ -78,7 +78,7 @@ export default function App() {
     setShowTelegramModal(false);
   };
 
-  // Categories with Sports #1
+  // Categories with All -> Favorites -> Sports -> Others
   const categories = useMemo(() => {
     const set = new Set();
     channels.forEach((c) => {
@@ -96,7 +96,7 @@ export default function App() {
     }
 
     list.sort();
-    return ['All', sportsItem, ...list];
+    return ['All', 'Favorites', sportsItem, ...list];
   }, [channels]);
 
   // Filtered channels

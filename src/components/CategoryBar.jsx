@@ -1,8 +1,9 @@
 import React from 'react';
-import { Trophy, Film, Newspaper, Music, Sparkles, Tv, Flame } from 'lucide-react';
+import { Trophy, Film, Newspaper, Music, Sparkles, Tv, Flame, Heart } from 'lucide-react';
 
 const CATEGORY_CONFIG = [
   { id: 'All', label: 'All Channels', icon: Flame },
+  { id: 'Favorites', label: 'Favorites', icon: Heart },
   { id: 'Sports', label: 'Sports', icon: Trophy, isSports: true },
   { id: 'Entertainment', label: 'Entertainment', icon: Tv },
   { id: 'Movies', label: 'Movies', icon: Film },
@@ -13,7 +14,6 @@ const CATEGORY_CONFIG = [
 ];
 
 export default function CategoryBar({ categories, selectedCategory, onSelectCategory }) {
-  // Ensure Sports is directly after All
   const displayCategories = categories.length > 0 
     ? categories 
     : CATEGORY_CONFIG.map(c => c.id);
@@ -25,6 +25,7 @@ export default function CategoryBar({ categories, selectedCategory, onSelectCate
           {displayCategories.map((cat) => {
             const isSelected = selectedCategory === cat;
             const isSports = cat.toLowerCase() === 'sports';
+            const isFavorites = cat.toLowerCase() === 'favorites';
 
             return (
               <button
@@ -34,12 +35,17 @@ export default function CategoryBar({ categories, selectedCategory, onSelectCate
                   isSelected
                     ? isSports
                       ? 'bg-gradient-to-r from-amber-500 to-red-600 text-white shadow-lg shadow-amber-500/20 scale-105'
+                      : isFavorites
+                      ? 'bg-gradient-to-r from-pink-600 to-rose-600 text-white shadow-lg shadow-pink-600/30 scale-105'
                       : 'bg-red-600 text-white shadow-lg shadow-red-600/30 scale-105'
                     : isSports
                     ? 'bg-amber-500/10 text-amber-400 border border-amber-500/30 hover:bg-amber-500/20 hover:text-white'
+                    : isFavorites
+                    ? 'bg-pink-500/10 text-pink-400 border border-pink-500/30 hover:bg-pink-500/20 hover:text-white'
                     : 'bg-slate-900/90 text-slate-300 border border-slate-800 hover:bg-slate-800 hover:text-white hover:border-slate-700'
                 }`}
               >
+                {isFavorites && <Heart className="w-3.5 h-3.5 text-pink-400 fill-pink-400" />}
                 {isSports && <Trophy className="w-3.5 h-3.5 text-amber-300 animate-pulse" />}
                 {cat === 'All' && <Flame className="w-3.5 h-3.5 text-red-400" />}
                 <span>{cat}</span>
