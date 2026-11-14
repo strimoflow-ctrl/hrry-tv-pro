@@ -5,12 +5,7 @@ export default function DownloadModal({ isOpen, onClose, channelName }) {
   if (!isOpen) return null;
 
   const handleDownload = () => {
-    const link = document.createElement('a');
-    link.href = '/Hrry_tv_pro.apk';
-    link.setAttribute('download', 'Hrry_tv_pro.apk');
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    window.location.href = 'https://pub-47ed3d1499e74513acc2f956e489e661.r2.dev/hrytvapk/Hrry_tv_pro.apk';
     onClose();
   };
 
